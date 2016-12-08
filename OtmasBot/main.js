@@ -22,6 +22,7 @@ client.on('message', message => {
     message.channel.sendMessage('-ping: Pong!')
     message.channel.sendMessage('-about: Displays some info.')
     message.channel.sendMessage('-authorInfo: Displays some totally true info about @Otmas')
+    message.channel.sendMessage('-git: Sends you to the github repository')
   }
   if (message.content.startsWith(prefix + 'about')) {
     message.reply('This is OtmasBot Version ' + VERSION + " which was coded by @Otmas in just over 5 minutes. For more info, or to report problems, don't message him. :D ")
