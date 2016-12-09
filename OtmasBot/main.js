@@ -44,12 +44,17 @@ client.on('message', message => {
   }
   if (message.content.startsWith(prefix + 'prefix')) {
 
-    let args = args.split(' ')
+    let args = message.content.split(' ')
     prefix = args[1]
   }
   if (message.content.startsWith(prefix + 'git')) {
     message.reply('The github repo can be found at https://github.com/Oatmas64134/Otmas-Bot')
     message.reply('Please send all bug reports there, and not to Otmas')
+  }
+  if (message.content.startsWith(prefix + 'kick')) {
+    let args = message.content.split(' ')
+    let userTarget = args[1]
+    message.guild.member(args[1]).kick()
   }
 
 
