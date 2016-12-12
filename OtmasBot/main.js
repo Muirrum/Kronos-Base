@@ -3,7 +3,6 @@ const client = new Discord.Client();
 const user = client;
 const VERSION = "0.5.3"
 
-
 client.on('ready', () => {
     console.log('OtmasBot V0.5.1 has logged in and succesfully authenicated, Lord Otmas!');
 
@@ -11,10 +10,6 @@ client.on('ready', () => {
 
 client.on('guildMemberAdd', () => {
 });  
-client.on('guildCreate', () => {
-    console.log('The OtmasBot has been added to a server!')
-    console.log('Server name:' + guild )
-});
 
 client.on('reconnecting', () => {
     console.log('The bot disconnected, but succesfully reconnected!')
@@ -50,7 +45,7 @@ client.on('message', message => {
     let args = message.content.split(' ')
     let annMsg = args.slice(1).join(" "); // remove first 2 args, then join array with a space
     console.log(annMsg)
-    client.channels.get("251488086813442051").sendMessage(annMsg)
+      message.guild.channels.find("name", "announcements").sendMessage(annMsg);
 
   }
   if (message.content.startsWith(prefix + 'prefix')) {
@@ -63,16 +58,57 @@ client.on('message', message => {
     message.reply('Please send all bug reports there, and not to Otmas')
   }
   if (message.content.startsWith(prefix + 'kick')) {
-    let args = message.content.split(' ')
-    let userTarget = args[1]
-    message.guild.member(args[1]).kick()
+      let modRole = message.guild.roles.find("name", "OtmasBot Commander")
+      if (message.member.roles.has(modRole.id)) {
+	  let args = message.content.split(' ')
+	  let userTarget = args[1]
+	  message.guild.member(args[1]).kick()
+      } else {
+	  message.reply("Heh. You honestly thought that you could do this? Welp, you can't.")
   }
     if (message.content.startsWith(prefix + 'uptime')) {
 	message.reply(client.uptime)
 	console.log('Almighty Otmas, the current uptime is:' + client.uptime)
-    }	
+    }
+    if (message.content.startsWith(prefix + 'nickname')) {
+	let args = message.content.split(' ' )
+	let botNick = args.slice(1).join(" ")
+        var bot = Discord.GuildMember
+	message.guild.members.get("247865503064915978").setNickname(botNick);
+	console.log(botNick)
+    }
+  }
+    if (message.content.startsWith(prefix + 'eval')) {
+        if(message.author.id !== "118455061222260736") return;
+	try {
+	    let args = message.content.split(' ')
+	    var code = args.join(" ");
+	    var evaled = eval(code);
 
+	    if (typeof evaled !== "string")
+		evaled = require("util").inspect(evaled);
 
+	    message.channel.sendCode("xl", clean(evaled));
+	} catch(err) {
+	    message.channel.sendMessage(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``);
+	}
+
+    }
+
+	}); //END MSG HANDLER
+	function clean(text) {
+	    if (typeof(text) === "string")
+		return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
+	    else
+		return text;
+	}
+
+client.on('guildCreate', guild => {
+    console.log("The OtmasBots reach has expanded to ${guild.name}, formerly owned by ${guild.owner.user.username}")
+    guild.defaultChannel.sendMessage("Thank you for using The Otmas Bot, developed by Otmas in 2016.")
+    guild.defaultChannel.sendMessage("To use all mod-specific commands, please create a role titled 'OtmasBot Commander'. If you do not have this role, one will be created for you.")
+    
 });
 
-client.login('MjQ3ODY1NTAzMDY0OTE1OTc4.CwvaPw._YWA7uj59xcdnNb-Ft8A_ketOuM');
+
+client.login('MjQ3ODY1NTAzMDY0OTE1OTc4.CzCu7g.F-q8YAc3Pi1hAK8AIQXmsqEbXvs');
