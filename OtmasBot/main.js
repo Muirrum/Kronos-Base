@@ -1,16 +1,27 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const user = client;
 const VERSION = "0.5.3"
 
 
 client.on('ready', () => {
-  console.log('OtmasBot V0.5.1 has logged in and succesfully authenicated, Lord Otmas!');
+    console.log('OtmasBot V0.5.1 has logged in and succesfully authenicated, Lord Otmas!');
+
 });
 
+client.on('guildMemberAdd', () => {
+});  
+client.on('guildCreate', () => {
+    console.log('The OtmasBot has been added to a server!')
+    console.log('Server name:' + guild )
+});
 
+client.on('reconnecting', () => {
+    console.log('The bot disconnected, but succesfully reconnected!')
+});
 
 client.on('message', message => {
-  var prefix = "!"
+  var prefix = "█"
   if (message.author.bot) return;
   //if (!message.content.startsWith(prefix)) return;
   if (message.content.startsWith(prefix + 'ping')) {
@@ -56,6 +67,10 @@ client.on('message', message => {
     let userTarget = args[1]
     message.guild.member(args[1]).kick()
   }
+    if (message.content.startsWith(prefix + 'uptime')) {
+	message.reply(client.uptime)
+	console.log('Almighty Otmas, the current uptime is:' + client.uptime)
+    }	
 
 
 });
