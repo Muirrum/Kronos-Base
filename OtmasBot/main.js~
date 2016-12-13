@@ -60,4 +60,4 @@ client.on('message', message => {
 
 });
 
-client.login('MjQ3ODY1NTAzMDY0OTE1OTc4.CwvaPw._YWA7uj59xcdnNb-Ft8A_ketOuM');
+client.login('[REDACTED BY SAM]');
