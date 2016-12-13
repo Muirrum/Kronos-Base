@@ -2,6 +2,17 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const user = client;
 const VERSION = "0.6.6"
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+
+
+function httpGet(theUrl)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false );
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
+
 
 
 client.on('ready', () => {
@@ -32,6 +43,14 @@ client.on('message', message => {
       message.channel.sendMessage('-git: Sends you to the github repository')
       message.channel.sendMessage('-invite: gives you a link to invite the bot to your server')  
   }
+  if(message.content === prefix + 'cat') {	
+			var jsonfile = httpGet('http://random.cat/meow')
+			var jsdc = JSON.parse(jsonfile);
+			message.channel.sendMessage(jsdc.file);
+  	} else if(message.content === prefix + 'dog') {	
+			var txt = httpGet('http://random.dog/woof')
+			message.channel.sendMessage('http://random.dog/' + txt);
+	}
   if (message.content.startsWith(prefix + 'about')) {
     message.reply('This is OtmasBot Version ' + VERSION + " which was coded by @Otmas in just over 5 minutes. For more info, or to report problems, don't message him. :D ")
   }
