@@ -52,7 +52,7 @@ client.on('message', message => {
 			message.channel.sendMessage('http://random.dog/' + txt);
 	}
   if (message.content.startsWith(prefix + 'about')) {
-    message.reply('This is OtmasBot Version ' + VERSION + " which was coded by @Otmas in just over 5 minutes. For more info, or to report problems, don't message him. :D ")
+    message.reply('This is OtmasBot Version ' + VERSION + " which was coded by <@118455061222260736> with some help from <@129280647633174528> in just over 5 minutes. For more info, or to report problems, don't message him. :D ")
   }
   if (message.content.startsWith(prefix + 'authorInfo')) {
     message.channel.sendMessage('This is totally not-lying information about @Otmas, the author of this bot.')
