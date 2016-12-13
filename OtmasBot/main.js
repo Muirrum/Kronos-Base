@@ -41,6 +41,7 @@ client.on('message', message => {
     message.channel.sendMessage('He started programming at the early age of 0 months.')
     message.channel.sendMessage('He made his first malevolent AI at the age of 1 month')
     message.channel.sendMessage('He is also responsible for the destruction of SCP-666 and is personally responsible for the construction of SCPF Site-61')
+	message.channel.sendMessage('Xavier also did some stuff too. I promise. Totes not trying to get fame. 100%. Lots of love. xoxox')
   }
   if (message.content.startsWith(prefix + 'announce')) {
 
