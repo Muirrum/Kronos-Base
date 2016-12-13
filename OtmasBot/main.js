@@ -118,4 +118,4 @@ client.on('guildCreate', guild => {
 });
 
 
-client.login('MjQ3ODY1NTAzMDY0OTE1OTc4.CzCu7g.F-q8YAc3Pi1hAK8AIQXmsqEbXvs');
+client.login('[DATA EXPUNGED]');
