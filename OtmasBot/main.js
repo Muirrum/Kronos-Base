@@ -1,10 +1,11 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const user = client;
-const VERSION = "0.5.3"
+const VERSION = "0.6.6"
+
 
 client.on('ready', () => {
-    console.log('OtmasBot V0.5.1 has logged in and succesfully authenicated, Lord Otmas!');
+    console.log('OtmasBot V0.6.6 has logged in and succesfully authenicated, Lord Otmas!');
 
 });
 
@@ -28,7 +29,8 @@ client.on('message', message => {
     message.channel.sendMessage('-ping: Pong!')
     message.channel.sendMessage('-about: Displays some info.')
     message.channel.sendMessage('-authorInfo: Displays some totally true info about @Otmas')
-    message.channel.sendMessage('-git: Sends you to the github repository')
+      message.channel.sendMessage('-git: Sends you to the github repository')
+      message.channel.sendMessage('-invite: gives you a link to invite the bot to your server')  
   }
   if (message.content.startsWith(prefix + 'about')) {
     message.reply('This is OtmasBot Version ' + VERSION + " which was coded by @Otmas in just over 5 minutes. For more info, or to report problems, don't message him. :D ")
@@ -94,7 +96,12 @@ client.on('message', message => {
 	}
 
     }
-
+    if (message.content.startsWith(prefix + 'invite')) {
+	message.reply('Thank you for liking the bot so much that you want to invite it to your server!\nInvite Link: https://tinyurl.com/hr3rucj')
+    }
+   // if (message.content = ('kys') {
+//	message.delete();
+  //  }
 	}); //END MSG HANDLER
 	function clean(text) {
 	    if (typeof(text) === "string")
@@ -107,7 +114,7 @@ client.on('guildCreate', guild => {
     console.log("The OtmasBots reach has expanded to ${guild.name}, formerly owned by ${guild.owner.user.username}")
     guild.defaultChannel.sendMessage("Thank you for using The Otmas Bot, developed by Otmas in 2016.")
     guild.defaultChannel.sendMessage("To use all mod-specific commands, please create a role titled 'OtmasBot Commander'. If you do not have this role, one will be created for you.")
-    
+    guild.createRole({ name: 'OtmasBot Commander' })
 });
 
 
