@@ -30,7 +30,7 @@ client.on('message', message => {
   if (command === 'about') {
     message.reply('This is OtmasBot Version ' + VERSION + " which was coded by @Otmas in just over 5 minutes. For more info, or to report problems, don't message him. :D ")
   }
-  if (command === 'authorInfo')) {
+  if (command === 'authorInfo') {
     message.channel.sendMessage('This is totally not-lying information about @Otmas, the author of this bot.')
     message.channel.sendMessage('Otmas was born in the United States of Otmas, in the city of Otmasington D.C.')
     message.channel.sendMessage('He started programming at the early age of 0 months.')
