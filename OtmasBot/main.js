@@ -16,7 +16,7 @@ client.on('message', message => {
 
   if (message.author.bot) return;
   //if (!message.content.startsWith(prefix)) return;
-  if (message.content.startsWith(prefix + 'ping') {
+  if (command === 'ping') {
     console.log('The bot works!')
     message.channel.sendMessage('pong!');
   }
