@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const VERSION = "0.5.1"
-
+const config = require('./config.json')
 
 client.on('ready', () => {
   console.log('OtmasBot V0.5.1 has logged in and succesfully authenicated, Lord Otmas!');
@@ -10,7 +10,10 @@ client.on('ready', () => {
 
 
 client.on('message', message => {
-  var prefix = "!"
+
+  let command = message.content.split(' ')
+  command = command.slice(config.prefix.length)
+
   if (message.author.bot) return;
   //if (!message.content.startsWith(prefix)) return;
   if (message.content.startsWith(prefix + 'ping')) {
