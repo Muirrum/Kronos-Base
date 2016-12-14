@@ -16,18 +16,18 @@ client.on('message', message => {
 
   if (message.author.bot) return;
   //if (!message.content.startsWith(prefix)) return;
-  if (message.content.startsWith(prefix + 'ping')) {
+  if (message.content.startsWith(prefix + 'ping') {
     console.log('The bot works!')
     message.channel.sendMessage('pong!');
   }
-  if (command === 'cmds')) {
+  if (command === 'cmds') {
     message.channel.sendMessage('Open commands are:')
     message.channel.sendMessage('-ping: Pong!')
     message.channel.sendMessage('-about: Displays some info.')
     message.channel.sendMessage('-authorInfo: Displays some totally true info about @Otmas')
     message.channel.sendMessage('-git: Sends you to the github repository')
   }
-  if (command === 'about')) {
+  if (command === 'about') {
     message.reply('This is OtmasBot Version ' + VERSION + " which was coded by @Otmas in just over 5 minutes. For more info, or to report problems, don't message him. :D ")
   }
   if (command === 'authorInfo')) {
@@ -37,7 +37,7 @@ client.on('message', message => {
     message.channel.sendMessage('He made his first malevolent AI at the age of 1 month')
     message.channel.sendMessage('He is also responsible for the destruction of SCP-666 and is personally responsible for the construction of SCPF Site-61')
   }
-  if (command === 'announce')) {
+  if (command === 'announce') {
 
     let args = message.content.split(' ')
     let annMsg = args.slice(1).join(" "); // remove first 2 args, then join array with a space
@@ -45,16 +45,16 @@ client.on('message', message => {
     client.channels.get("251488086813442051").sendMessage(annMsg)
 
   }
-  if (command === 'prefix')) {
+  if (command === 'prefix') {
 
     let args = message.content.split(' ')
     prefix = args[1]
   }
-  if (command === 'git')) {
+  if (command === 'git') {
     message.reply('The github repo can be found at https://github.com/Oatmas64134/Otmas-Bot')
     message.reply('Please send all bug reports there, and not to Otmas')
   }
-  if (command === 'kick')) {
+  if (command === 'kick') {
     let args = message.content.split(' ')
     let userTarget = args[1]
     message.guild.member(args[1]).kick()
