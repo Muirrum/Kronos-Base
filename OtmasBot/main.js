@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const user = client;
 const VERSION = "0.6.6"
 const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-
+const config = require('./config.json')
 
 function httpGet(theUrl)
 {
@@ -28,12 +28,11 @@ client.on('reconnecting', () => {
 });
 
 client.on('message', message => {
-  var prefix = "█"
   if (message.author.bot) return;
   //if (!message.content.startsWith(prefix)) return;
 	
   let command = message.content.split(" ")[0]
-  command = command.slice(prefix.length)
+  command = command.slice(config.prefix.length)
   
   if (message.content.startsWith(prefix + 'ping')) {
     console.log('The bot works!')
@@ -142,4 +141,4 @@ client.on('guildCreate', guild => {
 });
 
 
-client.login('[DATA EXPUNGED]');
+client.login('config.token');
