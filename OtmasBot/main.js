@@ -1,7 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const VERSION = "0.5.1"
-const config = require('./config.json')
+const config = require('./config.json');
+const roleName = config.modRole
 
 client.on('ready', () => {
   console.log('OtmasBot V0.5.1 has logged in and succesfully authenicated, Lord Otmas!');
@@ -39,12 +40,16 @@ client.on('message', message => {
     message.channel.sendMessage('He is also responsible for the destruction of SCP-666 and is personally responsible for the construction of SCPF Site-61')
   }
   if (message.content.startsWith(prefix + 'announce')) {
-
-    let args = message.content.split(' ')
-    let annMsg = args.slice(1).join(" "); // remove first 2 args, then join array with a space
-    console.log(annMsg)
-    client.channels.get("251488086813442051").sendMessage(annMsg)
-
+    let modRole = message.guild.find('name', roleName);
+    if(msg.member.roles.has(modRole)) {
+       let args = message.content.split(' ')
+   		 let annMsg = args.slice(1).join(" "); // remove first 2 args, then join array with a space
+    	console.log(annMsg)
+    	client.channels.get("251488086813442051").sendMessage(annMsg)
+    } else {
+  		message.reply("Sorry bud, but you don't have the perms to do this.");
+		}
+   
   }
   if (message.content.startsWith(prefix + 'prefix')) {
 
@@ -56,9 +61,13 @@ client.on('message', message => {
     message.reply('Please send all bug reports there, and not to Otmas')
   }
   if (message.content.startsWith(prefix + 'kick')) {
-    let args = message.content.split(' ')
-    let userTarget = args[1]
-    message.guild.member(args[1]).kick()
+		let modRole = message.guild.find('name', roleName);
+		if(message.member.roles.has(modRole)) {
+    	let args = message.content.split(' ')
+    	let userTarget = args[1]
+   	  message.guild.member(args[1]).kick()
+		} else {
+			message.reply("You honestly thought you could do this? Welp, you can't")
   }
 
 
