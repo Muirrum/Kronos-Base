@@ -1,6 +1,7 @@
 {
 
-  "prefix" : █,
-  "token" : copyyourtokenhere
+  "prefix" : "█",
+  "token" : "copyyourtokenhere"
+  "modRole" : "OtmasBot Commander"
 
 }
