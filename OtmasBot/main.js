@@ -70,6 +70,9 @@ client.on('message', message => {
     if (message.content.startsWith(prefix + 'alive')) {
 	message.reply('Yes, I am alive.\nThank you for being concerned about me!')
     }
+	if (message.content.startsWith(prefix + 'trello')) {
+		message.channel.sendMessage("The information trello can be found here: https://trello.com/b/dlVPh2TL/the-otmasbot")
+	}
 });
 
 client.login(config.token);
