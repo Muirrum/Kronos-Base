@@ -2,7 +2,7 @@
 
     "prefix" : "█",
   "token" : "",
-  "modRole" : "OtmasBot Commander"
+  "modRole" : "OtmasBot Commander",
   "noPermsMsg" : "Sorry Bud, but you don't have the perms to do this!"
 
 }
