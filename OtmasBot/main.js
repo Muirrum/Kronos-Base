@@ -6,7 +6,7 @@ const roleName = config.modRole
 const prefix = config.prefix
 
 client.on('ready', () => {
-  console.log('OtmasBot V0.5.1 has logged in and succesfully authenicated, Lord Otmas!');
+  console.log('OtmasBot V' + VERSION + 'has logged in and succesfully authenicated, Lord Otmas!');
 });
 
 
@@ -38,13 +38,13 @@ client.on('message', message => {
   }
   if (message.content.startsWith(prefix + 'announce')) {
     let modRole = message.guild.find('name', roleName);
-    if(msg.member.roles.has(modRole)) {
+    if(message.member.roles.has(modRole)) {
        let args = message.content.split(' ')
    		 let annMsg = args.slice(1).join(" "); // remove first 2 args, then join array with a space
     	console.log(annMsg)
     	client.channels.get("251488086813442051").sendMessage(annMsg)
     } else {
-  		message.reply("Sorry bud, but you don't have the perms to do this.");
+  		message.reply(config.noPermsMsg);
 		}
    
   }
@@ -64,7 +64,7 @@ client.on('message', message => {
     	let userTarget = args[1]
    	  message.guild.member(args[1]).kick()
 		} else {
-			message.reply("You honestly thought you could do this? Welp, you can't")
+			message.reply(config.noPermsMsg)
   }
   }
     if (message.content.startsWith(prefix + 'alive')) {
