@@ -1,6 +1,0 @@
-install: 
-- npm install discord.js
-- npm install pm2
-
-script:
-- pm2 start OtmasBot\main.js
