@@ -1,4 +1,5 @@
 install: 
+- npm update
 - npm install discord.js
 - npm install pm2
 
