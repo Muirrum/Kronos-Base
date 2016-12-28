@@ -3,8 +3,16 @@ const client = new Discord.Client();
 const VERSION = "0.5.1"
 const config = require('./config.json');
 const roleName = config.modRole
-const prefix = config.prefix
+var prefix = config.prefix
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
+function httpGet(theUrl)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false );
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
 client.on('ready', () => {
   console.log('OtmasBot V' + VERSION + 'has logged in and succesfully authenicated, Lord Otmas!');
 });
@@ -14,22 +22,33 @@ client.on('ready', () => {
 client.on('message', message => {
 
   let command = message.content.split(' ')
-  command = command.slice(config.prefix.length)
+  command = command.slice(prefix.length)
 
   if (message.author.bot) return;
   //if (!message.content.startsWith(prefix)) return;
   
-  if (message.content.startsWith(config.prefix + 'ping')) {
+  if (message.content.startsWith(prefix + 'ping')) {
     console.log('The bot works!')
     message.channel.sendMessage('pong!');
   }
-  if (message.content.startsWith(config.prefix + 'cmds')) {
-      message.channel.sendMessage('Open commands are: \n -ping: Pong! \n -about: Displays some info. \n -authorInfo: Displays info about Otmas and Xavier Vernalls. \n -git: Sends you to the github Repository');
+  if (message.content.startsWith(prefix + 'dog')) {
+	  var txt = httpGet('http://random.dog/woof')
+	message.channel.sendMessage('http://random.dog/' + txt);
   }
-  if (message.content.startsWith(config.prefix +'about')) {
+    if (message.content.startsWith(prefix + 'cat')) {
+			var jsonfile = httpGet('http://random.cat/meow')
+			var jsdc = JSON.parse(jsonfile);
+			message.channel.sendMessage(jsdc.file);
+  }
+  if (message.content.startsWith(prefix + 'cmds')) {
+	  var cmdtext = 'Open commands are: \n -ping: Pong! \n -about: Displays some info. \n -authorInfo: Displays info about Otmas and Xavier Vernalls. \n -git: Sends you to the github Repository';
+	  cmdtext = cmdtext.replace(/-/g,prefix);
+      message.channel.sendMessage(cmdtext);
+  }
+  if (message.content.startsWith(prefix +'about')) {
     message.reply('This is OtmasBot Version ' + VERSION + " which was coded by @Otmas in just over 5 minutes. For more info, or to report problems, don't message him. :D ")
   }
-  if (message.content.startsWith(config.prefix +'authorInfo')) {
+  if (message.content.startsWith(prefix +'authorinfo')) {
     message.channel.sendMessage('This is totally not-lying information about @Otmas, the author of this bot.')
     message.channel.sendMessage('Otmas was born in the United States of Otmas, in the city of Otmasington D.C.')
     message.channel.sendMessage('He started programming at the early age of 0 months.')
@@ -49,8 +68,7 @@ client.on('message', message => {
    
   }
   if (message.content.startsWith(prefix + 'prefix')) {
-
-    let args = message.content.split(' ')
+    var args = message.content.split(' ')
     prefix = args[1]
   }
   if (message.content.startsWith(prefix + 'git')) {
