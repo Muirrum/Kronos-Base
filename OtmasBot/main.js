@@ -46,7 +46,7 @@ client.on('message', message => {
       message.channel.sendMessage(cmdtext);
   }
   if (message.content.startsWith(prefix +'about')) {
-    message.reply('This is OtmasBot Version ' + VERSION + " which was coded by @Otmas in just over 5 minutes. For more info, or to report problems, don't message him. :D ")
+    message.reply('This is OtmasBot Version ' + VERSION + " which was coded by @Otmas in just over 5 minutes. For more info, or to report problems, don't message him. :D \n Our website can be found here: dev-otmas.surge.sh/otmasbot-index.html ")  
   }
   if (message.content.startsWith(prefix +'authorinfo')) {
     message.channel.sendMessage('This is totally not-lying information about @Otmas, the author of this bot.')
