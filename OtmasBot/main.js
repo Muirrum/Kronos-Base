@@ -31,15 +31,15 @@ client.on('message', message => {
     console.log('The bot works!')
     message.channel.sendMessage('pong!');
   }
-  if (message.content.startsWith(prefix + 'dog')) {
-	  var txt = httpGet('http://random.dog/woof')
-	message.channel.sendMessage('http://random.dog/' + txt);
-  }
-    if (message.content.startsWith(prefix + 'cat')) {
-			var jsonfile = httpGet('http://random.cat/meow')
-			var jsdc = JSON.parse(jsonfile);
-			message.channel.sendMessage(jsdc.file);
-  }
+//  if (message.content.startsWith(prefix + 'dog')) {
+//	  var txt = httpGet('http://random.dog/woof')
+//	message.channel.sendMessage('http://random.dog/' + txt);
+  //}
+    //if (message.content.startsWith(prefix + 'cat')) {
+	//		var jsonfile = httpGet('http://random.cat/meow')
+	//		var jsdc = JSON.parse(jsonfile);
+	//		message.channel.sendMessage(jsdc.file);
+  //}
   if (message.content.startsWith(prefix + 'cmds')) {
 	  var cmdtext = 'Open commands are: \n -ping: Pong! \n -about: Displays some info. \n -authorInfo: Displays info about Otmas and Xavier Vernalls. \n -git: Sends you to the github Repository';
 	  cmdtext = cmdtext.replace(/-/g,prefix);
