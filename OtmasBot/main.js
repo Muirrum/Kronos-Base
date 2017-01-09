@@ -14,7 +14,7 @@ function httpGet(theUrl)
     return xmlHttp.responseText;
 }
 client.on('ready', () => {
-  console.log('OtmasBot V' + VERSION + ' has logged in and succesfully authenicated, Lord Otmas!');
+  console.log('OtmasBot V' + VERSION + ' has logged in and succesfully authenicated!');
 });
 
 
