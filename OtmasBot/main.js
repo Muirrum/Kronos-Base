@@ -14,7 +14,7 @@ function httpGet(theUrl)
     return xmlHttp.responseText;
 }
 client.on('ready', () => {
-  console.log('OtmasBot V' + VERSION + 'has logged in and succesfully authenicated, Lord Otmas!');
+  console.log('OtmasBot V' + VERSION + ' has logged in and succesfully authenicated, Lord Otmas!');
 });
 
 
@@ -72,8 +72,7 @@ client.on('message', message => {
     prefix = args[1]
   }
   if (message.content.startsWith(prefix + 'git')) {
-    message.reply('The github repo can be found at https://github.com/Oatmas64134/Otmas-Bot')
-    message.reply('Please send all bug reports there, and not to Otmas')
+    message.reply('The github repo can be found at https://github.com/Oatmas64134/Otmas-Bot \n Please send all bug reports there, and not to Otmas')
   }
   if (message.content.startsWith(prefix + 'kick')) {
 		let modRole = message.guild.find('name', roleName);
