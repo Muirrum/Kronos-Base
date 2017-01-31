@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const VERSION = "0.9.3-alpha.2"
+const VERSION = "0.9.3-alpha.4"
 const config = require('./config.json');
 const roleName = config.modRole
 var prefix = config.prefix
@@ -42,14 +42,14 @@ client.on('message', message => {
 	//		message.channel.sendMessage(jsdc.file);
   //}
   if (message.content.startsWith(prefix + 'cmds')) {
-	  var cmdtext = 'Open commands are: \n -ping: Pong! \n -about: Displays some info. \n -authorInfo: Displays info about Otmas and Xavier Vernalls. \n -git: Sends you to the github Repository';
+	  var cmdtext = 'Open commands are: \n -ping: Pong! \n -about: Displays some info. \n -authorInfo: Displays info about Otmas and Xavier Vernalls. \n -git: Sends you to the github Repository \n -trello: Gives you a link to the trello. \n -alive: Returns a message.';
 	  cmdtext = cmdtext.replace(/-/g,prefix);
       message.channel.sendMessage(cmdtext);
   }
   if (message.content.startsWith(prefix +'about')) {
     message.reply('This is OtmasBot Version ' + VERSION + " which was coded by @Otmas in just over 5 minutes. For more info, or to report problems, don't message him. :D \n Our website can be found here: http://dev-otmas.surge.sh/otmasbot-index.html ")  
   }
-  if (message.content.startsWith(prefix +'authorinfo')) {
+  if (message.content.startsWith(prefix +'authorInfo')) {
     message.channel.sendMessage('This is totally not-lying information about @Otmas, the author of this bot.')
     message.channel.sendMessage('Otmas was born in the United States of Otmas, in the city of Otmasington D.C.')
     message.channel.sendMessage('He started programming at the early age of 0 months.')
