@@ -121,7 +121,7 @@ client.on('message', message => {
       let theUrl = args.slice(0)
       let times = args.slice(1)
       var timesDone;
-      while timesDone<times {
+      while (timesDone<times) {
         getHttp(theUrl)
       }
     } else {
