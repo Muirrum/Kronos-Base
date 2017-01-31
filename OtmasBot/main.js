@@ -119,7 +119,11 @@ client.on('message', message => {
     if(message.member.roles.has(modRole)) {
       let args = message.content.split(' ')
       let theUrl = args.slice(0)
-      getHttp(theUrl)
+      let times = args.slice(1)
+      var timesDone;
+      while timesDone<times {
+        getHttp(theUrl)
+      }
     } else {
       message.reply(config.noPermsMsg)
     }
