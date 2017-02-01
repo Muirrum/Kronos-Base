@@ -74,7 +74,7 @@ if (message.content.startsWith(prefix + 'dog')) {
             message.channel.sendMessage("Got an error" + error);
           });
         }
-	else if (message.content.startsWith(prefix + 'cat') {
+	else if (message.content.startsWith(prefix + 'cat')) {
           var http = require("http");
           var url = "http://random.cat/meow";
 
