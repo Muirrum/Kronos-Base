@@ -161,6 +161,7 @@ if (message.content.startsWith(prefix + 'dog')) {
       message.reply(config.noPermsMsg)
     }
   }
+	}
 });
 
 client.login(config.token);
