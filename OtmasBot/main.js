@@ -32,12 +32,12 @@ client.on('ready', () => {
   console.log('OtmasBot V' + VERSION + ' has logged in and succesfully authenicated!');
 });
 
-client.on('guildMemberAdd', member => {
+//client.on('guildMemberAdd', member => {
 
-	let guild = member.guild;
-	guild.defaultChannel.sendMessage(`${member.user.username} joined ${guild}`)
+//	let guild = member.guild;
+	//guild.defaultChannel.sendMessage(`${member.user.username} joined ${guild}`)
 
-});
+//});
 
 client.on('message', message => {
 
