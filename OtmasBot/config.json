@@ -2,5 +2,6 @@
 
 	"prefix" : "█",
 	"token" : "",
-	"modRole" : "OtmasBot Commander"
+	"modRole" : "OtmasBot Commander",
+	"greetPlayers" : false
 }
