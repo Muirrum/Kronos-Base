@@ -54,15 +54,46 @@ client.on('message', message => {
     message.channel.sendMessage('pong!');
     message.channel.sendMessage('Current Ping:' + client.ping);
   }
-//  if (message.content.startsWith(prefix + 'dog')) {
-//	  var txt = httpGet('http://random.dog/woof')
-//	message.channel.sendMessage('http://random.dog/' + txt);
-  //}
-    //if (message.content.startsWith(prefix + 'cat')) {
-	//		var jsonfile = httpGet('http://random.cat/meow')
-	//		var jsdc = JSON.parse(jsonfile);
-	//		message.channel.sendMessage(jsdc.file);
-  //}
+if (message.content.startsWith(prefix + 'dog')) {
+          var http = require("http");
+          var url = "http://random.dog/woof";
+
+          http.get(url, function (res) {
+            var body = "";
+
+            res.on("data", function (chunk) {
+              body += chunk;
+            });
+
+            res.on("end", function () {
+              var fbResponse = body;
+              message.channel.sendMessage("http://random.dog/" + fbResponse);
+            });
+          }).on("error", function (error) {
+            console.log("Got an error: ", error);
+            message.channel.sendMessage("Got an error" + error);
+          });
+        }
+	else if (message.content.startsWith(prefix + 'cat') {
+          var http = require("http");
+          var url = "http://random.cat/meow";
+
+          http.get(url, function (res) {
+            var body = "";
+
+            res.on("data", function (chunk) {
+              body += chunk;
+            });
+
+            res.on("end", function () {
+              var fbResponse = JSON.parse(body);
+              console.log("Got a response: ", fbResponse.file);
+              message.channel.sendMessage(fbResponse.file);
+            });
+          }).on("error", function (errCat) {
+            console.log("Got an error: ", errCat);
+            e.message.channel.sendMessage(e.message.author.nickMention + ", Got an error " + errCat);
+          });
   if (message.content.startsWith(prefix + 'cmds')) {
 	  var cmdtext = 'Open commands are: \n -ping: Pong! \n -about: Displays some info. \n -authorInfo: Displays info about Otmas and Xavier Vernalls. \n -git: Sends you to the github Repository \n -trello: Gives you a link to the trello. \n -alive: Returns a message.';
 	  cmdtext = cmdtext.replace(/-/g,prefix);
