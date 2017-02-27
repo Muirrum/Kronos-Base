@@ -10,4 +10,4 @@ install:
 
 script:
 - pm2 start OtmasBot/main.js
-- exit
+- sudo shutdown -h now
