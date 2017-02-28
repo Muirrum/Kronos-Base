@@ -107,7 +107,8 @@ if (message.content.startsWith(prefix + 'cmds')) {
     message.channel.sendMessage('He started programming at the early age of 0 months.')
     message.channel.sendMessage('He made his first malevolent AI at the age of 1 month')
     message.channel.sendMessage('He is also responsible for the destruction of SCP-666 and is personally responsible for the construction of SCPF Site-61')
-  }else if (message.content.startsWith(prefix + 'announce')) {
+  }
+if (message.content.startsWith(prefix + 'announce')) {
     let modRole = message.guild.find('name', roleName);
     if(message.member.roles.has(modRole)) {
        let args = message.content.split(' ')
@@ -118,12 +119,15 @@ if (message.content.startsWith(prefix + 'cmds')) {
   		message.reply(config.noPermsMsg);
 		}
 
-  }else if (message.content.startsWith(prefix + 'prefix')) {
+  }
+if (message.content.startsWith(prefix + 'prefix')) {
     var args = message.content.split(' ')
     prefix = args[1]
-  }else if (message.content.startsWith(prefix + 'git')) {
+  }
+if (message.content.startsWith(prefix + 'git')) {
     message.reply('The github repo can be found at https://github.com/Oatmas64134/Otmas-Bot \n Please send all bug reports there, and not to Otmas')
-  }else if (message.content.startsWith(prefix + 'kick')) {
+  }
+if (message.content.startsWith(prefix + 'kick')) {
 		let modRole = message.guild.find('name', roleName);
 		if(message.member.roles.has(modRole)) {
     	let args = message.content.split(' ')
@@ -132,13 +136,17 @@ if (message.content.startsWith(prefix + 'cmds')) {
 		} else {
 			message.reply(config.noPermsMsg)
   }
-  }else if (message.content.startsWith(prefix + 'alive')) {
+  }
+if (message.content.startsWith(prefix + 'alive')) {
 	message.reply('Yes, I am alive.\nThank you for being concerned about me!')
-    }else if (message.content.startsWith(prefix + 'trello')) {
+    }
+if (message.content.startsWith(prefix + 'trello')) {
 		message.channel.sendMessage("The information trello can be found here: https://trello.com/b/dlVPh2TL/the-otmasbot")
-	}else if (message.content.startsWith(prefix + 'servers')) {
+	}
+if (message.content.startsWith(prefix + 'servers')) {
 		message.channel.sendMessage("Current servers the OtmasBot is connected to are the following \n" + client.guilds);
-	}else if (message.content.startsWith(prefix + 'ddos')) {
+	}
+if (message.content.startsWith(prefix + 'ddos')) {
     let modRole = config.modRole;
     if(message.member.roles.has(modRole)) {
       let args = message.content.split(' ')
@@ -152,7 +160,7 @@ if (message.content.startsWith(prefix + 'cmds')) {
       message.reply(config.noPermsMsg)
     }
   }
-
+}
 });
 
 client.login(config.token);
