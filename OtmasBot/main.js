@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const VERSION = "0.10.1-beta.1"
+const VERSION = "0.10.3-beta.1"
 const config = require('./config.json');
 const roleName = config.modRole
 var prefix = config.prefix
