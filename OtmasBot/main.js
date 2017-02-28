@@ -53,7 +53,8 @@ client.on('message', message => {
     console.log('The bot works!')
     message.channel.sendMessage('pong!');
     message.channel.sendMessage('Current Ping:' + client.ping);
-  }else if (message.content.startsWith(prefix + 'dog')) {
+  } /*
+  if (message.content.startsWith(prefix + 'dog')) {
           var http = require("http");
           var url = "http://random.dog/woof";
 
@@ -73,7 +74,7 @@ client.on('message', message => {
             message.channel.sendMessage("Got an error" + error);
           });
         }
-	else if (message.content.startsWith(prefix + 'cat')) {
+	if (message.content.startsWith(prefix + 'cat')) {
           var http = require("http");
           var url = "http://random.cat/meow";
 
@@ -92,11 +93,13 @@ client.on('message', message => {
           }).on("error", function (errCat) {
             console.log("Got an error: ", errCat);
             e.message.channel.sendMessage(e.message.author.nickMention + ", Got an error " + errCat);
-          });if (message.content.startsWith(prefix + 'cmds')) {
+          }); */
+if (message.content.startsWith(prefix + 'cmds')) {
 	  var cmdtext = 'Open commands are: \n -ping: Pong! \n -about: Displays some info. \n -authorInfo: Displays info about Otmas and Xavier Vernalls. \n -git: Sends you to the github Repository \n -trello: Gives you a link to the trello. \n -alive: Returns a message.';
 	  cmdtext = cmdtext.replace(/-/g,prefix);
       message.channel.sendMessage(cmdtext);
-  }else if (message.content.startsWith(prefix +'about')) {
+  }
+  if (message.content.startsWith(prefix +'about')) {
     message.reply('This is OtmasBot Version ' + VERSION + " which was coded by @Otmas in just over 5 minutes. For more info, or to report problems, don't message him. :D \n Our website can be found here: http://dev-otmas.surge.sh/otmasbot-index.html ")
   }else if (message.content.startsWith(prefix +'authorInfo')) {
     message.channel.sendMessage('This is totally not-lying information about @Otmas, the author of this bot.')
@@ -149,7 +152,7 @@ client.on('message', message => {
       message.reply(config.noPermsMsg)
     }
   }
-}
+
 });
 
 client.login(config.token);
