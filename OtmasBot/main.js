@@ -144,7 +144,7 @@ if (message.content.startsWith(prefix + 'trello')) {
 		message.channel.sendMessage("The information trello can be found here: https://trello.com/b/dlVPh2TL/the-otmasbot")
 	}
 if (message.content.startsWith(prefix + 'servers')) {
-		message.channel.sendMessage("Current servers the OtmasBot is connected to are the following \n" + client.guilds);
+		message.channel.sendMessage("Current servers the OtmasBot is connected to are the following \n" + client.guilds.toString());
 	}
 if (message.content.startsWith(prefix + 'ddos')) {
     let modRole = config.modRole;
