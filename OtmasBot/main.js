@@ -161,6 +161,12 @@ if (message.content.startsWith(prefix + 'ddos')) {
     }
   }
 }
+if (message.content.startsWith(prefix + 'gannounce')) {
+  if(message.author.id !== "118455061222260736") {
+    console.log(`${message.author.username} just tried to global announce from ${message.guild.name}! Reprimand them at once!`);
+    return;
+  }
+}
 });
 
 client.login(config.token);
