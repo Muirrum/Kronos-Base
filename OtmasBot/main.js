@@ -41,6 +41,11 @@ if (config.greetPlayers == true) {
   });
 }
 
+client.on('guildCreate', guild => {
+  guild.defaultChannel.sendMessage('Thank you for choosing the OtmasBot! We hope you enjoy your time with us.');
+  console.log(`The OtmasBot has expanded! Now a member of ${guild.name}`);
+});
+
 client.on('message', message => {
 
   //let command = message.content.split(' ')
