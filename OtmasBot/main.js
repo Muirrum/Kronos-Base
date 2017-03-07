@@ -17,7 +17,7 @@ const music = require('discord.js-music');
 }*/
 
 music(client, {
-	prefix: "!@",
+	prefix: config.prefix,
 	anyoneCanSkip: "false",
 });
 
