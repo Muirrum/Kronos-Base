@@ -63,7 +63,7 @@ client.on('message', message => {
   if (message.content.startsWith(prefix + 'ping')) {
     console.log('The bot works!');
     message.channel.sendMessage('pong!');
-    message.channel.sendMessage('Current Ping:' + client.ping.toString());
+    message.channel.sendMessage('Current Ping:' + client.ping);
   } /*
   if (message.content.startsWith(prefix + 'dog')) {
           var http = require("http");
