@@ -1,11 +1,12 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const VERSION = '0.10.3-beta.1';
+const VERSION = '0.10.4-beta.1';
 const config = require('./config.json');
 const roleName = config.modRole;
 var prefix = config.prefix;
 //const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 const got = require('got');
+const music = require('discord.js-music');
 
 /*function httpGet(theUrl)
 {
@@ -15,11 +16,13 @@ const got = require('got');
     return xmlHttp.responseText;
 }*/
 
+music(client, config.prefix);
+
 function getHttp(theUrl) {
   got(theUrl)
     .then(response => {
       console.log(response.body);
-        //=> '<!doctype html> ...'
+        //=> '<!doctype html>
     })
     .catch(error => {
       console.log(error.response.body);
@@ -57,7 +60,7 @@ client.on('message', message => {
   if (message.content.startsWith(prefix + 'ping')) {
     console.log('The bot works!');
     message.channel.sendMessage('pong!');
-    message.channel.sendMessage('Current Ping:' + client.ping);
+    message.channel.sendMessage('Current Ping:' + client.ping.toString());
   } /*
   if (message.content.startsWith(prefix + 'dog')) {
           var http = require("http");
