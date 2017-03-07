@@ -16,7 +16,10 @@ const music = require('discord.js-music');
     return xmlHttp.responseText;
 }*/
 
-music(client, config.prefix);
+music(client, {
+	prefix: "!@",
+	anyoneCanSkip: "false",
+});
 
 function getHttp(theUrl) {
   got(theUrl)
