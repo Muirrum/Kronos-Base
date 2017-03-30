@@ -186,7 +186,6 @@ client.on("message", message => {
         timesDone = 0;
       }*/
     }
-  }
 });
 
 client.login(config.token);
