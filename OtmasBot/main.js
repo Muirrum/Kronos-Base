@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const VERSION = "0.10.4-beta.1";
+const VERSION = "0.10.4-beta.2";
 const config = require("./config.json");
 const roleName = config.modRole;
 var prefix = config.prefix;
@@ -186,7 +186,7 @@ client.on("message", message => {
         }
         timesDone = 0;
       }
-    
+
 });
 
 client.login(config.token);
