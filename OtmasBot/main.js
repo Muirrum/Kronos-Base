@@ -176,7 +176,7 @@ client.on("message", message => {
         return;
       }
     }
-   /* if(message.content.startsWith(prefix + "spam")) {
+    if(message.content.startsWith(prefix + "spam")) {
       if(message.member.roles.has(config.modRole)) {
         let args = message.content.split("");
         let spamMsg = args.split(2).join(" ");
@@ -185,7 +185,7 @@ client.on("message", message => {
           timesDone++;
         }
         timesDone = 0;
-      }*/
+      }
     
 });
 
