@@ -10,10 +10,10 @@ const noisyDebug = false;
 
 
 
-music(client, {
+/*music(client, {
 	prefix: "!@",
 	anyoneCanSkip: "false",
-});
+});*/
 
 music(client, config.prefix);
 function getHttp(theUrl) {
