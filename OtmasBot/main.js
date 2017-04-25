@@ -13,9 +13,9 @@ const noisyDebug = false;
 /*music(client, {
 	prefix: "!@",
 	anyoneCanSkip: "false",
-});*/
+});
 
-music(client, config.prefix);
+music(client, config.prefix);*/
 function getHttp(theUrl) {
   got(theUrl)
     .then(response => {
@@ -30,7 +30,7 @@ function getHttp(theUrl) {
 }
 
 client.on("ready", () => {
-  console.log("OtmasBot V" + VERSION + " has logged in and succesfully authenicated!");
+  console.log("OtmasBot V" + VERSION + " has logged in and succesfully authenticated!");
 });
 
 if (config.greetPlayers == true) {
