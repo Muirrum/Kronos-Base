@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const VERSION = "0.10.4-beta.1";
+const VERSION = "0.10.5-beta.2";
 const config = require("./config.json");
 const roleName = config.modRole;
 var prefix = config.prefix;
@@ -9,16 +9,19 @@ const music = require("discord.js-music");
 const noisyDebug = false;
 
 
+
 <<<<<<< HEAD
-=======
 music(client, {
+  prefix: "!@",
+  anyoneCanSkip: "false",
+=======
+/*music(client, {
 	prefix: "!@",
 	anyoneCanSkip: "false",
+>>>>>>> 2ccb0f426491780becc8151241a7a334124ee3c0
 });
->>>>>>> b453d1f667a8ed3fad0e34074d5007bf08ec671a
 
-
-music(client, config.prefix);
+music(client, config.prefix);*/
 function getHttp(theUrl) {
   got(theUrl)
     .then(response => {
@@ -33,7 +36,7 @@ function getHttp(theUrl) {
 }
 
 client.on("ready", () => {
-  console.log("OtmasBot V" + VERSION + " has logged in and succesfully authenicated!");
+  console.log("OtmasBot V" + VERSION + " has logged in and succesfully authenticated!");
 });
 
 if (config.greetPlayers == true) {
@@ -44,6 +47,10 @@ if (config.greetPlayers == true) {
 
   });
 }
+
+client.on("guildDelete", guild => {
+  console.log(`The OtmasBot just left ${guild.name}, owned by ${guild.owner}, who has the ID ${guild.ownerID}. Mission Failed, we'll get em next time.`);
+});
 
 client.on("guildCreate", guild => {
   guild.createRole({name: config.modRole}).catch(console.error);
@@ -59,64 +66,12 @@ client.on("message", message => {
   if (message.author.bot) return;
   //if (!message.content.startsWith(prefix)) return;
 
-<<<<<<< HEAD
   if (message.content.startsWith(prefix + "ping")) {
     console.log("The bot works!");
     message.channel.sendMessage("pong!");
     if (noisyDebug) {
       message.channel.sendMessage("Current Ping:" + client.ping.toString());
     }
-=======
-  if (message.content.startsWith(prefix + 'ping')) {
-    console.log('The bot works!');
-    message.channel.sendMessage('pong!');
-    message.channel.sendMessage('Current Ping:' + client.ping);
-  } /*
-  if (message.content.startsWith(prefix + 'dog')) {
-          var http = require("http");
-          var url = "http://random.dog/woof";
-
-          http.get(url, function (res) {
-            var body = "";
-
-            res.on("data", function (chunk) {
-              body += chunk;
-            });
-
-            res.on("end", function () {
-              var fbResponse = body;
-              message.channel.sendMessage("http://random.dog/" + fbResponse);
-            });
-          }).on("error", function (error) {
-            console.log("Got an error: ", error);
-            message.channel.sendMessage("Got an error" + error);
-          });
-        }
-	if (message.content.startsWith(prefix + 'cat')) {
-          var http = require("http");
-          var url = "http://random.cat/meow";
-
-          http.get(url, function (res) {
-            var body = "";
-
-            res.on("data", function (chunk) {
-              body += chunk;
-            });
-
-            res.on("end", function () {
-              var fbResponse = JSON.parse(body);
-              console.log("Got a response: ", fbResponse.file);
-              message.channel.sendMessage(fbResponse.file);
-            });
-          }).on("error", function (errCat) {
-            console.log("Got an error: ", errCat);
-            e.message.channel.sendMessage(e.message.author.nickMention + ", Got an error " + errCat);
-          }); */
-  if (message.content.startsWith(prefix + 'cmds')) {
-    var cmdtext = 'Open commands are: \n -ping: Pong! \n -about: Displays some info. \n -authorInfo: Displays info about Otmas and Xavier Vernalls. \n -git: Sends you to the github Repository \n -trello: Gives you a link to the trello. \n -alive: Returns a message.';
-    cmdtext = cmdtext.replace(/-/g,prefix);
-    message.channel.sendMessage(cmdtext);
->>>>>>> b453d1f667a8ed3fad0e34074d5007bf08ec671a
   }
   if (message.content.startsWith(prefix + "dog")) {
     var http = require("http");
@@ -158,6 +113,7 @@ client.on("message", message => {
       console.log("Got an error: ", errCat);
       errCat.message.channel.sendMessage(errCat.message.author.nickMention + ", Got an error " + errCat);
     });
+ }
     if (message.content.startsWith(prefix + "cmds")) {
       var cmdtext = "Open commands are: \n -ping: Pong! \n -about: Displays some info. \n -authorInfo: Displays info about Otmas and Xavier Vernalls. \n -git: Sends you to the github Repository \n -trello: Gives you a link to the trello. \n -alive: Returns a message.";
       cmdtext = cmdtext.replace(/-/g,prefix);
@@ -241,7 +197,6 @@ client.on("message", message => {
         timesDone = 0;
       }
     }
-  }
 });
 
 client.login(config.token);
