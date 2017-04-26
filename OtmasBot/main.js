@@ -11,8 +11,8 @@ const noisyDebug = false;
 
 
 music(client, {
-	prefix: "!@",
-	anyoneCanSkip: "false",
+  prefix: "!@",
+  anyoneCanSkip: "false",
 });
 
 music(client, config.prefix);
@@ -41,6 +41,10 @@ if (config.greetPlayers == true) {
 
   });
 }
+
+client.on("guildDelete", guild => {
+  console.log(`The OtmasBot just left ${guild.name}, owned by ${guild.owner}, who has the ID ${guild.ownerID}. Mission Failed, we'll get em next time.`);
+});
 
 client.on("guildCreate", guild => {
   guild.createRole({name: config.modRole}).catch(console.error);
