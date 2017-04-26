@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const VERSION = "0.10.5-beta.2";
+const VERSION = "0.10.4-beta.1";
 const config = require("./config.json");
 const roleName = config.modRole;
 var prefix = config.prefix;
@@ -10,12 +10,12 @@ const noisyDebug = false;
 
 
 
-/*music(client, {
-  prefix: "!@",
-  anyoneCanSkip: "false",
+music(client, {
+	prefix: "!@",
+	anyoneCanSkip: "false",
 });
 
-music(client, config.prefix);*/
+music(client, config.prefix);
 function getHttp(theUrl) {
   got(theUrl)
     .then(response => {
@@ -30,7 +30,7 @@ function getHttp(theUrl) {
 }
 
 client.on("ready", () => {
-  console.log("OtmasBot V" + VERSION + " has logged in and succesfully authenticated!");
+  console.log("OtmasBot V" + VERSION + " has logged in and succesfully authenicated!");
 });
 
 if (config.greetPlayers == true) {
@@ -41,10 +41,6 @@ if (config.greetPlayers == true) {
 
   });
 }
-
-client.on("guildDelete", guild => {
-  console.log(`The OtmasBot just left ${guild.name}, owned by ${guild.owner}, who has the ID ${guild.ownerID}. Mission Failed, we'll get em next time.`);
-});
 
 client.on("guildCreate", guild => {
   guild.createRole({name: config.modRole}).catch(console.error);
@@ -180,7 +176,7 @@ client.on("message", message => {
         return;
       }
     }
-    if(message.content.startsWith(prefix + "spam")) {
+   /* if(message.content.startsWith(prefix + "spam")) {
       if(message.member.roles.has(config.modRole)) {
         let args = message.content.split("");
         let spamMsg = args.split(2).join(" ");
@@ -189,8 +185,8 @@ client.on("message", message => {
           timesDone++;
         }
         timesDone = 0;
-      }
-    }
+      }*/
+    
 });
 
 client.login(config.token);
