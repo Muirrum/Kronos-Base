@@ -114,7 +114,7 @@ client.on("message", message => {
     message.channel.sendMessage(cmdtext);
   }
   if (message.content.startsWith(prefix +"about")) {
-    message.reply("This is OtmasBot Version " + VERSION + " which was coded by @Otmas in just over 5 minutes. For more info, or to report problems, don\"t message him. :D \n Our website can be found here: http://dev-otmas.surge.sh/otmasbot-index.html ");
+    message.reply("This is OtmasBot Version " + VERSION + " which was coded by @Otmas in just over 5 minutes. For more info, or to report problems, don\"t message him. :D \n Our website can be found here: http://devotmas.ddns.net/projects/otmasbot");
   }else if (message.content.startsWith(prefix +"authorInfo")) {
     message.channel.sendMessage("This is totally not-lying information about @Otmas, the author of this bot. \n Otmas was personnaly responsible for the construction of SCPF Area-108.");
   }
