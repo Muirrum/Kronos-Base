@@ -1,0 +1,19 @@
+{
+  "name": "kronos-bot",
+  "version": "1.0.0",
+  "description": "A discord bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dev-Osmium/Otmas-Bot.git"
+  },
+  "author": "Dev-Osmium",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dev-Osmium/Otmas-Bot/issues"
+  },
+  "homepage": "https://github.com/Dev-Osmium/Otmas-Bot#readme"
+}
