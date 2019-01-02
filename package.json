@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/Dev-Osmium/Otmas-Bot/issues"
   },
-  "homepage": "https://github.com/Dev-Osmium/Otmas-Bot#readme"
+  "homepage": "https://github.com/Dev-Osmium/Otmas-Bot#readme",
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "discord.js-commando": "^0.10.0",
+    "path": "^0.12.7"
+  }
 }

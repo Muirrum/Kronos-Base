@@ -18,9 +18,12 @@ module.exports = class ServerInfoCommand extends Command {
         var server = msg.guild;
         const embed = new RichEmbed()
             .setTitle(server.name + " Information")
-            .setImage(server.iconURL)
-            .setDescription("Test")
-            .setTimestamp();
+            .setThumbnail(server.iconURL)
+            .addField("Name", server.name)
+            .addField("Members", server.memberCount)
+            .addField("Owner", server.owner.displayName)
+            .setTimestamp()
+            .setFooter(server.createdAt.getUTCDate());
         return(msg.embed(embed));
     }
 }
