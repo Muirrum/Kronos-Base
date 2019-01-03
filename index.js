@@ -13,7 +13,8 @@ client.registry
     .registerDefaultTypes()
     .registerGroups([
         ['default', "Default"],
-        ['mod', "Moderation"]
+        ['mod', "Moderation"],
+        ['owner', "Owner-only"]
     ])
     .registerDefaultGroups()
     .registerDefaultCommands()
