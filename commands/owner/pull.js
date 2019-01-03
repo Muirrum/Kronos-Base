@@ -8,7 +8,7 @@ module.exports = class PullCommand extends Command {
             aliases: ['pull'],
             group: "owner",
             memberName: "pull",
-            description: "Provides information about the current server",
+            description: "Pulls new code from GitHub",
             guildOnly: true,
             examples: ["\\pull"]
         });
