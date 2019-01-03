@@ -9,7 +9,7 @@ module.exports = class PullCommand extends Command {
             group: "owner",
             memberName: "pull",
             description: "Pulls new code from GitHub",
-            guildOnly: true,
+            guildOnly: false,
             examples: ["\\pull"]
         });
     }
