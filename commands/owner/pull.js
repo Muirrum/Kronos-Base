@@ -25,7 +25,7 @@ module.exports = class PullCommand extends Command {
     run(msg) {
         msg.say("Pulling data from GitHub...");
         shell.exec("git pull", function(err) {
-            if (err !== null) {
+            if (err !== 0) {
                 msg.say("Encountered an error while pulling.")
                 msg.say(err);
             } else {
