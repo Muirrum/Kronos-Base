@@ -17,7 +17,7 @@ module.exports = class WarnCommand extends Command {
                 }
             ],
             examples: ["\\warn @Dr. Everett Mann TOO MANY SNEKS"],
-            userPermissions: ["KICK_MEMBER"]
+            userPermissions: ["KICK_MEMBERS"]
         });
     };
 
