@@ -19,6 +19,7 @@ module.exports = class AboutCommand extends Command {
             .addField("Invite:", "https://bit.ly/2SGonmw")
             .addField("Author", "Dr. Everett Mann#2318")
             .addField("Version Control", "https://bit.ly/2LQQDQV")
+            .addField("Issue Management", "http://bit.ly/2FbFQiI")
             .setTimestamp();
         return(msg.embed(embed));
     }
