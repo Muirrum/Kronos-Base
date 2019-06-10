@@ -4,7 +4,7 @@ const path = require('path');
 const config = require("./config.json");
 
 const client = new CommandoClient({
-    commandPrefix: "\\",
+    commandPrefix: config.prefix,
     owner: "118455061222260736",
     disableEveryone: true
 });
