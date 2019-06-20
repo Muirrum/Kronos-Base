@@ -23,13 +23,14 @@ module.exports = class XkcdCommand extends Command {
 
     run(msg, { number }) {
         var url = `http://xkcd.com/${number}/info.0.json`
+        console.log(url);
 
         http.get(url, function(res) {
             var { statusCode } = res;
-            if (statusCode != 200) {
-                msg.reply("There was an error fetching the XKCD.");
+           /* if (statusCode != 200) {
+                msg.reply("There was an error fetching the XKCD. Status code: " + statusCode);
                 return;
-            }
+            }*/
             let data = '';
             res.on('data', (chunk => { data += chunk}));
             res.on('end', () => {
@@ -37,7 +38,8 @@ module.exports = class XkcdCommand extends Command {
                     var parsedData = JSON.parse(data);
                     console.log(parsedData);
                 } catch (e) {
-                    message.reply("Error parsing JSON data. Please alert a developer.")
+                    msg.reply("Error parsing JSON data. Please alert a developer.");
+                    console.log(data);
                     console.error(e.message);
                 }
             })
