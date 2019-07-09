@@ -15,7 +15,7 @@ module.exports = class LogsCommand extends Command {
                 {
                     key: 'userid',
                     prompt: "ID you want to check?",
-                    type: 'string'
+                    type: 'member'
                 }
             ],
             examples: ["\\modlogs @Dr. Everett Mann"]
@@ -23,12 +23,20 @@ module.exports = class LogsCommand extends Command {
     };
 
     run (msg, { userid }) {
-        msg.say(userid);
-        let banList = bans.prepare(`SELECT * FROM bans WHERE user = ?`).get(userid);
-        if (banList) {
-            msg.reply(banList);
-        } else {
+        msg.reply(`Looking up bans for ${userid}`);
+        let banList = bans.prepare(`SELECT * FROM bans WHERE user = ?`).all(userid.id);
+        if (Array.isArray(banList)) {
+            for (var i = 0; i < banList.length; i++) {
+                msg.reply(`Banned by ${banList[i].mod} in server ${banList[i].guild} because ${banList[i].reason}`);
+            }
+        } else if (!Array.isArray(banList) && banList) {
+            msg.reply(`Banned by ${banList.mod} in server ${banList.guild} because ${banList.reason}`);
+        } 
+        else if (banList == undefined) {
             msg.reply(`No bans found for ${userid}`);
+        }
+        else {
+            msg.reply("Could not find bans");
         }
     }
 };
