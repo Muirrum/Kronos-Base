@@ -38,6 +38,7 @@ module.exports = class LogsCommand extends Command {
         else {
             msg.reply("Could not find bans");
         }
+        msg.reply(`Finished looking up bans for the user`);
     }
 };
 
