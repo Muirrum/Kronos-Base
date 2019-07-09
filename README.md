@@ -1,4 +1,4 @@
-# Otmas-Bot
+# Kronos Bot Base
 A discord.js bot, now revitalized as Kronos, bot of Uptime
 
 ## Project Goal
