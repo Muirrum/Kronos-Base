@@ -18,8 +18,8 @@ module.exports = class AboutCommand extends Command {
             .setThumbnail("https://cdn.discordapp.com/attachments/362274609565007872/531289159080607754/kronos.jpg")
             .addField("Invite:", "https://bit.ly/2SGonmw")
             .addField("Author", "Dr. Everett Mann#2318")
-            .addField("Version Control", "https://bit.ly/2LQQDQV")
-            .addField("Issue Management", "http://bit.ly/2FbFQiI")
+            .addField("Support Server", "ByTqrpm")
+            .addField("Website", "https://devosmium.xyz")
             .setTimestamp();
         return(msg.embed(embed));
     }
