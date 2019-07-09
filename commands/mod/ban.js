@@ -30,7 +30,7 @@ module.exports = class BanCommand extends Command {
 
     run (msg, { user, reason }) {
         msg.guild.ban(user, {reason: reason});
-        bans.prepare(`INSERT INTO bans (user, guild, mod, reason) VALUES (${user.id}, ${msg.guild.id},${msg.author.id}, ${reason});`).run();
+        bans.prepare(`INSERT INTO bans (user, guild, mod, reason) VALUES (?, ?, ?, ?);`).run(user.id, msg.guild.id, msg.author.id, reason.toString());
         
     }
 };
