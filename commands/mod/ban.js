@@ -29,7 +29,9 @@ module.exports = class BanCommand extends Command {
     };
 
     run (msg, { user, reason }) {
-        console.log("SQLITE was set up successfully!");
+        msg.guild.ban(user, {reason: reason});
+        bans.prepare(`INSERT INTO bans (user, guild, mod, reason) VALUES (${user.id}, ${msg.guild.id},${msg.author.id}, ${reason});`).run();
+        
     }
 };
 
