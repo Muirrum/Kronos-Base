@@ -1,4 +1,6 @@
 # Kronos Bot Base
+[![Build Status](http://kronos.devosmium.xyz:8080/job/Kronos%20Base/badge/icon)](http://kronos.devosmium.xyz:8080/job/Kronos%20Base/)
+
 A discord.js bot, now revitalized as Kronos, bot of Uptime
 
 ## Project Goal
