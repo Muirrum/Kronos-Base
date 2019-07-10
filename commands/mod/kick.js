@@ -30,8 +30,8 @@ module.exports = class KickCommand extends Command {
 
     run (msg, { user, reason }) {
         kicks.prepare('INSERT INTO kicks (user, guild, mod, reason) VALUES (?, ?, ?, ?);').run(user.id, msg.guild.id, msg.author.id, reason);
-        msg.guild.kick(user, {reason: reason});
         msg.reply(`Kicked user ${user.username}`);
+        user.kick(reason);
     }
 };
 
