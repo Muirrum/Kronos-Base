@@ -1,8 +1,10 @@
 # Kronos Bot Base
+[![Build Status](http://kronos.devosmium.xyz:8080/job/Kronos%20Base/badge/icon)](http://kronos.devosmium.xyz:8080/job/Kronos%20Base/)
+
 A discord.js bot, now revitalized as Kronos, bot of Uptime
 
 ## Project Goal
-> Create a bot with kicks, bans, persistent warns, and mutes
+> Create a bot with persistent, kicks, bans, warns, and mutes that are auditable by anybody.
 
 ## Project Requirements
 1. Warns and mutes persistent across bot removals

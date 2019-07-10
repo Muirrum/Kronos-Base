@@ -1,22 +1,22 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
 
-module.exports = class WarnCommand extends Command {
+module.exports = class YourCommand extends Command {
     constructor(client) {
         super(client, {
-            name: "warn",
+            name: "your",
             group: "mod",
-            memberName: "warn",
+            memberName: "your",
             description: "Gives the user a warning",
             guildOnly: true,
             args: [
                 {
-                    key: 'user',
-                    prompt: "Who do you want to warn?",
-                    type: 'member'
+                    key: 'arg',
+                    prompt: "arg",
+                    type: 'string'
                 }
             ],
-            examples: ["\\warn @Dr. Everett Mann TOO MANY SNEKS"],
+            examples: ["\\your "],
             userPermissions: ["KICK_MEMBERS"]
         });
     };
