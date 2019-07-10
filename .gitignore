@@ -2,3 +2,4 @@ config.json
 OtmasBot/
 node_modules/
 .idea/
+db/
