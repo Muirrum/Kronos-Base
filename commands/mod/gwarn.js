@@ -6,10 +6,10 @@ const warns = new SQLite('./db/warns.sqlite');
 module.exports = class WarnCommand extends Command {
     constructor(client) {
         super(client, {
-            name: "warn",
+            name: "gwarn",
             group: "mod",
-            memberName: "warn",
-            description: "Gives the user a warning",
+            memberName: "gwarn",
+            description: "Gives the user a warning and logs it",
             guildOnly: true,
             args: [
                 {
@@ -23,7 +23,7 @@ module.exports = class WarnCommand extends Command {
                     type: "string"
                 }
             ],
-            examples: ["\\warn @Dr. Everett Mann TOO MANY SNEKS"],
+            examples: ["\\gwarn @Dr. Everett Mann TOO MANY SNEKS"],
             userPermissions: ["KICK_MEMBERS"]
         });
     };
