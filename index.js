@@ -4,7 +4,7 @@ const path = require('path');
 const SQLite = require("better-sqlite3");
 // Define action information DB
 const bans = new SQLite('./db/bans.sqlite');
-const kicks = new SQLite('./db/kicks,sqlite');
+const kicks = new SQLite('./db/kicks.sqlite');
 
 const config = require("./config.json");
 
