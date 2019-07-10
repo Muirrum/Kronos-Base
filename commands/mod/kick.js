@@ -1,5 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
+const SQLite = require("better-sqlite3");
+const kicks = new SQLite('./db/kicks.sqlite');
 
 module.exports = class KickCommand extends Command {
     constructor(client) {
@@ -26,8 +28,10 @@ module.exports = class KickCommand extends Command {
         });
     };
 
-    run (msg) {
-
+    run (msg, { user, reason }) {
+        kicks.prepare('INSERT INTO kicks (user, guild, mod, reason) VALUES (?, ?, ?, ?);').run(user.id, msg.guild.id, msg.author.id, reason);
+        msg.guild.kick(user, {reason: reason});
+        msg.reply(`Kicked user ${user.username}`);
     }
 };
 

@@ -2,8 +2,9 @@ const { CommandoClient } = require('discord.js-commando');
 const path = require('path');
 
 const SQLite = require("better-sqlite3");
-// Define warn information DB
+// Define action information DB
 const bans = new SQLite('./db/bans.sqlite');
+const kicks = new SQLite('./db/kicks,sqlite');
 
 const config = require("./config.json");
 
@@ -26,7 +27,7 @@ client.registry
 
 client.on("ready", () => {
     client.user.setActivity("with time.");
-    // Initialize tables
+    // Initialize ban tables
     const banstable = bans.prepare("SELECT count(*) FROM sqlite_master WHERE type='table' AND name = 'bans';").get();
     if (!banstable['count(*)']) {
         // If it doesn't exist, create it
@@ -38,6 +39,16 @@ client.on("ready", () => {
 
         client.getBans = bans.prepare("SELECT * FROM bans WHERE user = ?");
     }
+
+    // Initialize KickDB
+    const kickstable = kicks.prepare("SELECT count(*) FROM sqlite_master WHERE type='table' AND name = 'kicks';").get();
+    if(!kickstable['count(*)']) {
+        kicks.prepare("CREATE TABLE kicks (id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT, guild TEXT, mod TEXT, reason TEXT);").run();
+        kicks.prepare("CREATE UNIQUE INDEX idx_kicks_id ON kicks (id);").run();
+        kicks.pragma("synchronous = 1");
+        kicks.pragma("journal_mod = wal");
+    }
+
     console.log("Initialized successfully");
 });
 
