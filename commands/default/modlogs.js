@@ -26,56 +26,57 @@ module.exports = class LogsCommand extends Command {
 
     run (msg, { userid }) {
         // Look at bans
-        msg.reply(`Looking up bans for ${userid}`);
         let banList = bans.prepare(`SELECT * FROM bans WHERE user = ?`).all(userid.id);
-        if (Array.isArray(banList)) {
+
+        var banMsg = `**Looking up bans for ${userid.user.username}#${userid.user.discriminator}**\n`;
+        if (banList) {
+
             for (var i = 0; i < banList.length; i++) {
-                msg.reply(`Banned by ${banList[i].mod} in server ${banList[i].guild} because ${banList[i].reason}`);
+                var banBase = `Banned by ${banList[i].mod} in server ${banList[i].guild} because of ${banList[i].reason}\n`;
+                banMsg = banMsg + banBase;
             }
-        } else if (!Array.isArray(banList) && banList) {
-            msg.reply(`Banned by ${banList.mod} in server ${banList.guild} because ${banList.reason}`);
-        } 
+        }
         else if (banList == undefined) {
-            msg.reply(`No bans found for ${userid}`);
+            banMsg = "No bans found."
         }
         else {
-            msg.reply("Could not find bans");
+            banMsg = "Could not find bans";
         }
-        msg.reply(`Finished looking up bans for the user`);
+        msg.say(banMsg);
+
 
         // Look up kicks
-        msg.reply(`Looking up kicks for ${userid}`);
         let kickList = kicks.prepare(`SELECT * FROM kicks WHERE user = ?`).all(userid.id);
-        if (Array.isArray(kickList)) {
+        var kickMsg = `**Looking up kicks for ${userid.user.username}#${userid.user.discriminator}**\n`;
+
+        if (kickList) {
             for (var i = 0; i < kickList.length; i++) {
-                msg.reply(`Kicked by ${kickList[i].mod} in server ${kickList[i].guild} because of ${kickList[i].reason}`);
+                var kickBase = `Kicked by ${kickList[i].mod} in server ${kickList[i].guild} because of ${kickList[i].reason}\n`
+                kickMsg = kickMsg + kickBase;
             }
-        } else if (!Array.isArray(kickList) && kickList) {
-            msg.reply(`Kicked by ${kickList[i].mod} in server ${kickList[i].guild} because of ${kickList[i].reason}`);
         } else if (kickList == undefined) {
-            msg.reply(`No kicks found for ${userid.username}`);
+            kickMsg = `Could not find any kicks`;
         } else {
-            msg.reply(`Could not find any kicks`);
+            kickMsg = `No kicks found`;
         }
-        msg.reply(`Finished looking up kicks for the user`);
+        msg.say(kickMsg);
 
         // Look up warns
-        msg.reply(`Looking up warns for ${userid}`);
         let warnList = warns.prepare(`SELECT * FROM warns WHERE user = ?`).all(userid.id);
-        if (Array.isArray(warnList)) {
+        var warnMsg = `**Looking up warns for ${userid.user.username}#${userid.user.discriminator}**\n`
+        if (warnList) {
             for (var i = 0; i < warnList.length; i++) {
-                msg.reply(`Warned by ${warnList[i].mod} in server ${warnList[i].guild} because ${warnList[i].reason}`);
+                var warnBase = `Warned by ${warnList[i].mod} in server ${warnList[i].guild} because of ${warnList[i].reason}\n`
+                warnMsg = warnMsg + warnBase;
             }
-        } else if (!Array.isArray(warnList) && warnList) {
-            msg.reply(`Warned by ${warnList.mod} in server ${warnList.guild} because ${warnList.reason}`);
         } 
         else if (warnList == undefined) {
-            msg.reply(`No warns found for ${userid}`);
+            warnMsg = "No warns found."
         }
         else {
-            msg.reply("Could not find warns");
+            warnMsg = "Could not find any warns"
         }
-        msg.reply(`Finished looking up warns for the user`);
+        msg.say(warnMsg);
     }
 };
 
