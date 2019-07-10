@@ -5,6 +5,7 @@ const SQLite = require("better-sqlite3");
 // Define action information DB
 const bans = new SQLite('./db/bans.sqlite');
 const kicks = new SQLite('./db/kicks.sqlite');
+const warns = new SQLite('./db/warns.sqlite');
 
 const config = require("./config.json");
 
@@ -46,6 +47,15 @@ client.on("ready", () => {
         kicks.prepare("CREATE TABLE kicks (id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT, guild TEXT, mod TEXT, reason TEXT);").run();
         kicks.prepare("CREATE UNIQUE INDEX idx_kicks_id ON kicks (id);").run();
         kicks.pragma("synchronous = 1");
+        kicks.pragma("journal_mod = wal");
+    }
+
+    // Initialize WarnDB
+    const warnsTable = warns.prepare("SELECT count(*) FROM sqlite_master WHERE type='table' AND name = 'warns';").get();
+    if(!warnsTable['count(*)']) {
+        warns.prepare("CREATE TABLE warns (id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT, guild TEXT, mod TEXT, reason TEXT);").run();
+        warns.prepare("CREATE UNIQUE INDEX idx_warns_id ON kicks (id);").run();
+        warns.pragma("synchronous = 1");
         kicks.pragma("journal_mod = wal");
     }
 
