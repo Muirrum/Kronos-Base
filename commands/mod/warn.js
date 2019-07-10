@@ -14,6 +14,11 @@ module.exports = class WarnCommand extends Command {
                     key: 'user',
                     prompt: "Who do you want to warn?",
                     type: 'member'
+                },
+                {
+                    key: 'reason',
+                    prompt: "What's the reason?",
+                    type: "string"
                 }
             ],
             examples: ["\\warn @Dr. Everett Mann TOO MANY SNEKS"],
@@ -21,7 +26,7 @@ module.exports = class WarnCommand extends Command {
         });
     };
 
-    run (msg) {
+    run (msg, { user, reason }) {
 
     }
 };
