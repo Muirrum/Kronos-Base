@@ -54,7 +54,7 @@ client.on("ready", () => {
     const warnsTable = warns.prepare("SELECT count(*) FROM sqlite_master WHERE type='table' AND name = 'warns';").get();
     if(!warnsTable['count(*)']) {
         warns.prepare("CREATE TABLE warns (id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT, guild TEXT, mod TEXT, reason TEXT);").run();
-        warns.prepare("CREATE UNIQUE INDEX idx_warns_id ON kicks (id);").run();
+        warns.prepare("CREATE UNIQUE INDEX idx_warns_id ON warns (id);").run();
         warns.pragma("synchronous = 1");
         kicks.pragma("journal_mod = wal");
     }
