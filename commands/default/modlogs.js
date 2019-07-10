@@ -3,6 +3,7 @@ const { RichEmbed } = require('discord.js');
 const SQLite = require("better-sqlite3");
 const bans = new SQLite("./db/bans.sqlite");
 const kicks = new SQLite("./db/kicks.sqlite");
+const warns = new SQLite("./db/warns.sqlite");
 
 module.exports = class LogsCommand extends Command {
     constructor(client) {
@@ -15,7 +16,7 @@ module.exports = class LogsCommand extends Command {
             args: [
                 {
                     key: 'userid',
-                    prompt: "ID you want to check?",
+                    prompt: "User you want to check?",
                     type: 'member'
                 }
             ],
@@ -57,6 +58,24 @@ module.exports = class LogsCommand extends Command {
             msg.reply(`Could not find any kicks`);
         }
         msg.reply(`Finished looking up kicks for the user`);
+
+        // Look up warns
+        msg.reply(`Looking up warns for ${userid}`);
+        let warnList = warns.prepare(`SELECT * FROM warns WHERE user = ?`).all(userid.id);
+        if (Array.isArray(warnList)) {
+            for (var i = 0; i < warnList.length; i++) {
+                msg.reply(`Warned by ${warnList[i].mod} in server ${warnList[i].guild} because ${warnList[i].reason}`);
+            }
+        } else if (!Array.isArray(warnList) && warnList) {
+            msg.reply(`Warned by ${warnList.mod} in server ${warnList.guild} because ${warnList.reason}`);
+        } 
+        else if (warnList == undefined) {
+            msg.reply(`No warns found for ${userid}`);
+        }
+        else {
+            msg.reply("Could not find warns");
+        }
+        msg.reply(`Finished looking up warns for the user`);
     }
 };
 
