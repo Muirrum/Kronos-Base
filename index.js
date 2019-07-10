@@ -6,6 +6,7 @@ const SQLite = require("better-sqlite3");
 const bans = new SQLite('./db/bans.sqlite');
 const kicks = new SQLite('./db/kicks.sqlite');
 const warns = new SQLite('./db/warns.sqlite');
+const lwarns = new SQLite('./db/lwarns.sqlite');
 
 const config = require("./config.json");
 
@@ -56,10 +57,23 @@ client.on("ready", () => {
         warns.prepare("CREATE TABLE warns (id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT, guild TEXT, mod TEXT, reason TEXT);").run();
         warns.prepare("CREATE UNIQUE INDEX idx_warns_id ON warns (id);").run();
         warns.pragma("synchronous = 1");
-        kicks.pragma("journal_mod = wal");
+        warns.pragma("journal_mod = wal");
     }
 
+
     console.log("Initialized successfully");
+});
+
+client.on("guildCreate", (guild) => {
+    // Initialize Local Actions DB
+    // Warns
+    const lwarnsTable = lwarns.prepare(`SELECT count(*) FROM sqlite_master WHERE type='table' AND name = ?`).get(guild.id);
+    if (!lwarnsTable['count(*)']) {
+        lwarns.prepare("CREATE TABLE ? (id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT, mod TEXT, reason TEXT);").run(guild.id);
+        lwarns.prepare("CREATE UNIQUE INDEX idx_lwarns_id ON ? (id)").run(guild.id);
+        lwarns.pragma("synchronous = 1");
+        lwarns.pragma("journal_mod = wal");
+    }
 });
 
 client.login(config.token);
