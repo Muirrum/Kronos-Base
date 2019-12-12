@@ -1,5 +1,14 @@
 const { CommandoClient } = require('discord.js-commando');
 const path = require('path');
+const fs = require('fs');
+// Create DB directory
+fs.mkdirSync(process.cwd() + "/db", {recursive: false}, (error) => {
+    if (error) {
+        console.log("couldn't create DB directory");
+    } else {
+        console.log ("created db directory");
+    }
+});
 
 const SQLite = require("better-sqlite3");
 // Define action information DB
