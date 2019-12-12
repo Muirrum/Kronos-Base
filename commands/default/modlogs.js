@@ -42,7 +42,6 @@ module.exports = class LogsCommand extends Command {
         else {
             banMsg = "Could not find bans";
         }
-        msg.say(banMsg);
 
 
         // Look up kicks
@@ -59,14 +58,13 @@ module.exports = class LogsCommand extends Command {
         } else {
             kickMsg = `No kicks found`;
         }
-        msg.say(kickMsg);
 
         // Look up warns
         let warnList = warns.prepare(`SELECT * FROM warns WHERE user = ?`).all(userid.id);
         var warnMsg = `**Looking up warns for ${userid.user.username}#${userid.user.discriminator}**\n`
         if (warnList) {
             for (var i = 0; i < warnList.length; i++) {
-                var warnBase = `Warned by ${warnList[i].mod} in server ${warnList[i].guild} because of ${warnList[i].reason}\n`
+                var warnBase = `Warned by <@${warnList[i].mod}> in server ${warnList[i].guild} because of ${warnList[i].reason}\n`
                 warnMsg = warnMsg + warnBase;
             }
         } 
@@ -76,7 +74,8 @@ module.exports = class LogsCommand extends Command {
         else {
             warnMsg = "Could not find any warns"
         }
-        msg.say(warnMsg);
+        var logMsg = banMsg + "\n" + kickMsg + "\n" + warnMsg;
+        msg.say(logMsg);
     }
 };
 
